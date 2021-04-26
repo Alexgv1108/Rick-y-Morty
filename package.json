@@ -1,0 +1,26 @@
+{
+  "name": "rick-y-morty",
+  "version": "1.0.0",
+  "description": "Proyecto de repaso de asincronismo con JS",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexgv1108/Rick-y-Morty.git"
+  },
+  "keywords": [
+    "asincronismo",
+    "repaso",
+    "rick",
+    "y",
+    "morty"
+  ],
+  "author": "Alexander Gallego Vasquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexgv1108/Rick-y-Morty/issues"
+  },
+  "homepage": "https://github.com/Alexgv1108/Rick-y-Morty#readme"
+}
