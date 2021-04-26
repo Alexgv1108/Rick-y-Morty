@@ -52,3 +52,16 @@ header .contenido img {
     height: 55vh;
     z-index: -1;
 }
+
+header .contenido .icono {
+    width: 60px;
+    height: 60px;
+    background: #000;
+    color: yellow;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+header .contenido .icono:hover {
+    cursor: pointer;
+}
