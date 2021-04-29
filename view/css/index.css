@@ -19,7 +19,7 @@ header {
 }
 
 header .contenido {
-    background: #d8bcb577;
+    background: #00000077;
     padding: 10px 20px;
     max-width: 650px;
 }
@@ -42,6 +42,7 @@ header .contenido h1 {
 header .contenido p {
     font-family: "Get Schwifty";
     font-size: 25px;
+    color: #fff;
 }
 
 header .contenido img {
