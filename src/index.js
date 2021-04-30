@@ -1,8 +1,9 @@
 import Peticion from './utils/Peticion.js';
 
 const API = 'https://rickandmortyapi.com/api/character/';
-const PAGES = 'view/pages/';
-const NUMERO_COLUMNAS = 3
+const DISPOSITIVO_MOVIL = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const NUMERO_COLUMNAS = DISPOSITIVO_MOVIL || screen.width < 1000 ? 6 : 3;
+const RESPONSIVE = DISPOSITIVO_MOVIL ? 'md' : 'lg';
 
 const solicitarData = async () => {
     try {
@@ -17,7 +18,7 @@ const solicitarData = async () => {
 const personajes = (personajes) => {
     personajes.forEach(personaje => {
         $('.contenido-pag-principal').append(`
-        <div class="col-lg-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
+        <div class="col-${RESPONSIVE}-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
         <img src='${personaje.image}'><h1>${personaje.name}</h1>
         <p>${personaje.status}</p><p>${personaje.species}</p><p>${personaje.gender}</p>
         </div></div>`);
