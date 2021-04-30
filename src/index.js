@@ -17,7 +17,7 @@ const solicitarData = async () => {
 const personajes = (personajes) => {
     personajes.forEach(personaje => {
         $('.contenido-pag-principal').append(`
-        <div class="col-md-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
+        <div class="col-lg-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
         <img src='${personaje.image}'><h1>${personaje.name}</h1>
         <p>${personaje.status}</p><p>${personaje.species}</p><p>${personaje.gender}</p>
         </div></div>`);
