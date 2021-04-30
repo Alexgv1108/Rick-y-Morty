@@ -1,5 +1,6 @@
 main {
     background: rgb(34, 34, 34);
+    width: 100%;
 }
 
 main .pag-principal {
@@ -15,6 +16,10 @@ main .pag-principal h1 {
 
 main .pag-principal p {
     color: #fff;
+}
+
+main .row {
+    width: 100%;
 }
 
 main .item {
