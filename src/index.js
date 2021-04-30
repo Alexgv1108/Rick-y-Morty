@@ -1,27 +1,71 @@
 import Peticion from './utils/Peticion.js';
 
 const API = 'https://rickandmortyapi.com/api/character/';
+
 const DISPOSITIVO_MOVIL = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 const NUMERO_COLUMNAS = DISPOSITIVO_MOVIL || screen.width < 1000 ? 6 : 3;
 const RESPONSIVE = DISPOSITIVO_MOVIL ? 'md' : 'lg';
 
-const solicitarData = async () => {
+const RANGO_PAGINACION = 3;
+
+const solicitarData = async (index) => {
     try {
-        const response = await Peticion(API, 'GET');
-        console.log(response.results)
-        personajes(response.results);
+        const response = await Peticion(API, index, 'GET');
+        personajes(response.results, index);
+        paginacion(response.info.pages);
     } catch (error) {
         console.error(error);
     }
 }
 
-const personajes = (personajes) => {
-    personajes.forEach(personaje => {
-        $('.contenido-pag-principal').append(`
-        <div class="col-${RESPONSIVE}-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
-        <img src='${personaje.image}'><h1>${personaje.name}</h1>
-        <p>${personaje.status}</p><p>${personaje.species}</p><p>${personaje.gender}</p>
-        </div></div>`);
+const personajes = (personajes, pagina) => {
+    if (localStorage.getItem('pagina') == pagina) {
+        $('.contenido-pag-principal').html('');
+        window.scroll({
+            top: 0
+          });
+        personajes.forEach(personaje => {
+            $('.contenido-pag-principal').append(`
+            <div class="col-${RESPONSIVE}-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
+            <img src='${personaje.image}'><h1>${personaje.name}</h1>
+            <p>${personaje.status}</p><p>${personaje.species}</p><p>${personaje.gender}</p>
+            </div></div>`);
+        });
+    }
+}
+
+const paginacion = (cantidad) => {
+    if (localStorage.getItem('pagina') != 1) $('.paginacion-item').html(`<li class="item-pagina paginacion-item-anterior">Anterior</li>`);
+    else $('.paginacion-item').html('');
+    for (let i = 1; i < cantidad+1; i++) {
+        if (localStorage.getItem('pagina') > (i - RANGO_PAGINACION) && localStorage.getItem('pagina') < (i + RANGO_PAGINACION)) {
+            if (i == localStorage.getItem('pagina')) {
+                $('.paginacion-item').append(`<li class="item-pagina active paginacion-item-${i}">${i}</li>`);
+            } else {
+                $('.paginacion-item').append(`<li class="item-pagina paginacion-item-${i}">${i}</li>`);
+            }
+        }
+
+        if (i == (localStorage.getItem('pagina') + RANGO_PAGINACION - 1)) {
+            break;
+        }
+
+        $(`.paginacion-item-${i}`).on('click', () => {
+            localStorage.setItem('pagina', i);
+            solicitarData(i);
+        });
+    }
+    if (localStorage.getItem('pagina') != cantidad) $('.paginacion-item').append(`<li class="item-pagina paginacion-item-siguiente">Siguiente</li>`);
+
+    $('.paginacion-item-anterior').on('click', () => {
+        localStorage.setItem('pagina', localStorage.getItem('pagina') - 1);
+        solicitarData(localStorage.getItem('pagina'));
+    });
+
+    $('.paginacion-item-siguiente').on('click', () => {
+        debugger;
+        localStorage.setItem('pagina', localStorage.getItem('pagina') - 1 + 2);
+        solicitarData(localStorage.getItem('pagina'));
     });
 }
 
@@ -33,5 +77,10 @@ const btnPageMain = () => {
     });
 }
 
-btnPageMain();
-solicitarData();
+const iniciar = () => {
+    localStorage.setItem('pagina', 1);
+    btnPageMain();
+    solicitarData(1);
+}
+
+iniciar();

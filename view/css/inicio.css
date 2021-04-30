@@ -1,11 +1,11 @@
-main {
+body {
     background: rgb(34, 34, 34);
     width: 100%;
 }
 
 main .pag-principal {
     width: 100%;
-    min-height: 100vh;
+    margin-bottom: 30px;
 }
 
 main .pag-principal h1 {
@@ -40,4 +40,27 @@ main .item .contenido-item {
 main .item .contenido-item img {
     width: 100%;
     height: auto;
+}
+
+.paginacion {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.paginacion .item-pagina {
+    display: inline-block;
+    color: #fff;
+    padding: 10px 15px;
+    background: #4b9ca5;
+    margin: 1px;
+    font-family: "Get Schwifty";
+}
+
+.paginacion .active {
+    background: #52b85f;
+}
+
+.paginacion .item-pagina:hover {
+    cursor: pointer;
 }
