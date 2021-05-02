@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
 body {
     background: rgb(34, 34, 34);
     width: 100%;
@@ -35,11 +37,22 @@ main .item .contenido-item {
     height: 100%;
     background: #000;
     padding: 20px;
+    border-bottom: 2px solid #4b9ca5;
 }
 
 main .item .contenido-item img {
     width: 100%;
     height: auto;
+}
+
+main .item .contenido-item p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+main .item .contenido-item p strong {
+    color: #4b9ca5;
 }
 
 .paginacion {
