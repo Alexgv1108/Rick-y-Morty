@@ -70,3 +70,25 @@ header .contenido .icono:hover {
 .oculto {
     display: none;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b9ca5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    background: #3b8088;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #52b85f;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(34, 34, 34);
+}
