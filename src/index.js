@@ -6,7 +6,9 @@ const DISPOSITIVO_MOVIL = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Op
 const NUMERO_COLUMNAS = DISPOSITIVO_MOVIL || screen.width < 1000 ? 6 : 3;
 const RESPONSIVE = DISPOSITIVO_MOVIL ? 'md' : 'lg';
 
-const RANGO_PAGINACION = 3;
+const RANGO_PAGINACION = DISPOSITIVO_MOVIL ? 3 : 4;
+const ANTERIOR = DISPOSITIVO_MOVIL ? ' < ' : 'Anterior';
+const SIGUIENTE = DISPOSITIVO_MOVIL ? ' > ' : 'Siguiente';
 
 const solicitarData = async (index) => {
     try {
@@ -35,7 +37,7 @@ const personajes = (personajes, pagina) => {
 }
 
 const paginacion = (cantidad) => {
-    if (localStorage.getItem('pagina') != 1) $('.paginacion-item').html(`<li class="item-pagina paginacion-item-anterior">Anterior</li>`);
+    if (localStorage.getItem('pagina') != 1) $('.paginacion-item').html(`<li class="item-pagina paginacion-item-anterior">${ANTERIOR}</li>`);
     else $('.paginacion-item').html('');
     for (let i = 1; i < cantidad+1; i++) {
         if (localStorage.getItem('pagina') > (i - RANGO_PAGINACION) && localStorage.getItem('pagina') < (i + RANGO_PAGINACION)) {
@@ -55,7 +57,7 @@ const paginacion = (cantidad) => {
             solicitarData(i);
         });
     }
-    if (localStorage.getItem('pagina') != cantidad) $('.paginacion-item').append(`<li class="item-pagina paginacion-item-siguiente">Siguiente</li>`);
+    if (localStorage.getItem('pagina') != cantidad) $('.paginacion-item').append(`<li class="item-pagina paginacion-item-siguiente">${SIGUIENTE}</li>`);
 
     $('.paginacion-item-anterior').on('click', () => {
         localStorage.setItem('pagina', localStorage.getItem('pagina') - 1);
@@ -63,7 +65,6 @@ const paginacion = (cantidad) => {
     });
 
     $('.paginacion-item-siguiente').on('click', () => {
-        debugger;
         localStorage.setItem('pagina', localStorage.getItem('pagina') - 1 + 2);
         solicitarData(localStorage.getItem('pagina'));
     });
