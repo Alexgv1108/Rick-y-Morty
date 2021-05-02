@@ -39,14 +39,14 @@ const personajes = (personajes, pagina) => {
 }
 
 const paginacion = (cantidad) => {
-    if (localStorage.getItem('pagina') != 1) $('.paginacion-item').html(`<li class="item-pagina paginacion-item-anterior">${ANTERIOR}</li>`);
+    if (localStorage.getItem('pagina') != 1) $('.paginacion-item').html(`<div class="item-pagina paginacion-item-anterior">${ANTERIOR}</div>`);
     else $('.paginacion-item').html('');
     for (let i = 1; i < cantidad+1; i++) {
         if (localStorage.getItem('pagina') > (i - RANGO_PAGINACION) && localStorage.getItem('pagina') < (i + RANGO_PAGINACION)) {
             if (i == localStorage.getItem('pagina')) {
-                $('.paginacion-item').append(`<li class="item-pagina active paginacion-item-${i}">${i}</li>`);
+                $('.paginacion-item').append(`<div class="item-pagina active paginacion-item-${i}">${i}</div>`);
             } else {
-                $('.paginacion-item').append(`<li class="item-pagina paginacion-item-${i}">${i}</li>`);
+                $('.paginacion-item').append(`<div class="item-pagina paginacion-item-${i}">${i}</div>`);
             }
         }
 
@@ -59,7 +59,7 @@ const paginacion = (cantidad) => {
             solicitarData(i);
         });
     }
-    if (localStorage.getItem('pagina') != cantidad) $('.paginacion-item').append(`<li class="item-pagina paginacion-item-siguiente">${SIGUIENTE}</li>`);
+    if (localStorage.getItem('pagina') != cantidad) $('.paginacion-item').append(`<div class="item-pagina paginacion-item-siguiente">${SIGUIENTE}</div>`);
 
     $('.paginacion-item-anterior').on('click', () => {
         localStorage.setItem('pagina', localStorage.getItem('pagina') - 1);
