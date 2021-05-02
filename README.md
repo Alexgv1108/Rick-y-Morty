@@ -1,5 +1,5 @@
 # Rick y Morty API
-### Este proyecto es un repaso del curso de asincronismo y cursos previos de Javascript de la plataforma **Platzi**.
+**Este proyecto es un repaso del curso de asincronismo y cursos previos de Javascript de la plataforma Platzi**
 - Se usó el método **fetch** para las peticiones asincrónicas.
 - La página web incluye un paginador que hace una petición por número de página.
 
