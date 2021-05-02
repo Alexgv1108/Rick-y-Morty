@@ -30,7 +30,7 @@ const personajes = (personajes, pagina) => {
         personajes.forEach(personaje => {
             $('.contenido-pag-principal').append(`
             <div class="col-${RESPONSIVE}-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
-            <img src='${personaje.image}'><h1>${personaje.name}</h1>
+            <img src='${personaje.image}' alt='${personaje.name}' title='${personaje.name}'><h1>${personaje.name}</h1>
             <p><strong>Status:</strong> ${personaje.status}</p><p><strong>Specie:</strong> ${personaje.species}</p><p><strong>Gender:</strong> ${personaje.gender}</p>
             <p><strong>Origin:</strong> ${personaje.origin.name}</p>
             </div></div>`);
