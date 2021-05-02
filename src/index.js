@@ -15,6 +15,7 @@ const solicitarData = async (index) => {
         const response = await Peticion(API, index, 'GET');
         personajes(response.results, index);
         paginacion(response.info.pages);
+        console.log(response);
     } catch (error) {
         console.error(error);
     }
@@ -30,7 +31,8 @@ const personajes = (personajes, pagina) => {
             $('.contenido-pag-principal').append(`
             <div class="col-${RESPONSIVE}-${NUMERO_COLUMNAS} item"><div class='contenido-item'>
             <img src='${personaje.image}'><h1>${personaje.name}</h1>
-            <p>${personaje.status}</p><p>${personaje.species}</p><p>${personaje.gender}</p>
+            <p><strong>Status:</strong> ${personaje.status}</p><p><strong>Specie:</strong> ${personaje.species}</p><p><strong>Gender:</strong> ${personaje.gender}</p>
+            <p><strong>Origin:</strong> ${personaje.origin.name}</p>
             </div></div>`);
         });
     }
