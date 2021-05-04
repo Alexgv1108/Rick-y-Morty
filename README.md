@@ -1,5 +1,5 @@
 # Rick y Morty API
-**URL** [Clic para abrir :D](https://alexgv1108.github.io/Rick-y-Morty/)  
+**URL:** [Clic para abrir :D](https://alexgv1108.github.io/Rick-y-Morty/)  
 **Este proyecto es un repaso del curso de asincronismo y cursos previos de Javascript de la plataforma Platzi**
 - Se usó el método **fetch** para las peticiones asincrónicas.
 - La página web incluye un paginador que hace una petición por número de página.
